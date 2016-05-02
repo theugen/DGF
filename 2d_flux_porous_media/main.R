@@ -18,4 +18,6 @@ piezometric <- set_dirichlet(piezometric, 9, 10)
 
 # Computing piezometric height
 piezometric <- get_h(piezometric)
+#plot(piezometric)
 
+#image()
