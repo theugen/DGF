@@ -20,4 +20,4 @@ piezometric <- set_dirichlet(piezometric, 9, 10)
 piezometric <- get_h(piezometric)
 #plot(piezometric)
 
-#image(piezometric)
+image(piezometric)

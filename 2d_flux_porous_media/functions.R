@@ -33,21 +33,23 @@ get_h <- function(x, threshold = 1e-6){
         }
       }
     }
+    now <- x[floor(length(x[1,])/2), floor(length(x[,1])/2)]
+    differ <- abs(previous - now)
   } 
-while(differ > threshold){
-  for(i in 1: length(x[,1])){  # Cycling over rows
-    for(j in 2:(length(x[1,])-1)){ # Cycling over columns
-      if(i != 1 && i!=length(x[,1])){
-        x[i,j] <- (x[i+1,j] + x[i-1,j] + x[i, j+1] + x[i, j-1])/4
-      }
-      else if(i==1){
-        x[i,j] <- (x[i+1,j] + x[i, j+1] + x[i, j-1])/3
-      }
-      else if(i==length(x[,1])){
-        x[i,j] <- (x[i-1,j] + x[i, j+1] + x[i, j-1])/3
+  while(differ > threshold){
+    for(i in 1: length(x[,1])){  # Cycling over rows
+      for(j in 2:(length(x[1,])-1)){ # Cycling over columns
+        if(i != 1 && i!=length(x[,1])){
+          x[i,j] <- (x[i+1,j] + x[i-1,j] + x[i, j+1] + x[i, j-1])/4
+        }
+        else if(i==1){
+          x[i,j] <- (x[i+1,j] + x[i, j+1] + x[i, j-1])/3
+        }
+        else if(i==length(x[,1])){
+          x[i,j] <- (x[i-1,j] + x[i, j+1] + x[i, j-1])/3
+        }
       }
     }
-  }
     now <- x[floor(length(x[1,])/2), floor(length(x[,1])/2)]
     #temp <- abs(differ - x[floor(length(x[1,])/2), floor(length(x[,1])/2)])
     differ <- abs(previous - now)
